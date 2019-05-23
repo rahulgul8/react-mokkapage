@@ -1,11 +1,19 @@
 
 .share{
-  display: inline-block;
-  width: 50%;
   text-align: center;
+  margin: 5px auto;
+  color: blue;
+  background: beige;
+  white-space: pre-line;
 }
 .input{
   display: inline-block;
   width: 20%;
   text-align: center;
+  margin: 15px 5px;
 }
+
+.container{
+  text-align: center;
+}
+

@@ -14,17 +14,18 @@ class EnterShare extends React.Component {
   }
 
   handleChange(event, key) {
-    let url = this.props.domain + encodeURI(event.target.value);
+    let encoded = encodeURI(event.target.value);
+    let url = this.props.domain + encoded;
+
     this.setState({ [key]: url });
   }
 
 
-
   render() {
-    return <div>
+    return <div class="container">
       <input class="input" type="text" placeholder="Enter your name" onChange={event => this.handleChange(event, 'url')}></input>
       <br />
-      <input class="share" type="text" placeholder="Enter your name" value={this.state.url} ></input>
+      <div class="share" type="text" placeholder="Enter your name">{this.state.url}</div>
       <button>SHARE</button>
     </div>;
   }
