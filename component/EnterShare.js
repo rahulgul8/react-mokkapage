@@ -3,20 +3,17 @@ import './homestyle.css';
 
 class EnterShare extends React.Component {
 
-  homeUrl = 'http://oorga.co/fancywish?name=';
-
   constructor(props) {
     super(props);
     this.state = {
       domain: '',
-      url: this.homeUrl,
+      url: this.props.domain,
     };
   }
 
   handleChange(event, key) {
     let encoded = encodeURI(event.target.value);
     let url = this.props.domain + encoded;
-
     this.setState({ [key]: url });
   }
 
