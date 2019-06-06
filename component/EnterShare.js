@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './homestyle.css';
+import './style.css';
 
 class EnterShare extends React.Component {
 
