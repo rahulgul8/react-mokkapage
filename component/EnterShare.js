@@ -23,7 +23,6 @@ class EnterShare extends React.Component {
       <input class="input" type="text" placeholder="Enter your name" onChange={event => this.handleChange(event, 'url')}></input>
       <br />
       <div class="share" type="text" placeholder="Enter your name">{this.state.url}</div>
-      <button>SHARE</button>
     </div>;
   }
 }
