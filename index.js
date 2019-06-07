@@ -16,7 +16,7 @@ class App extends Component {
 
 
   render() {
-    const elements = [{ url: 'https://picsum.photos/200', text: 'text1' }, { url: 'https://picsum.photos/200', text: 'text2' }, { url: 'https://picsum.photos/200', text: 'text3' }, { url: 'https://picsum.photos/200', text: 'text3' }];
+    const elements = [{ url: 'https://picsum.photos/200', text: 'text1' }, { url: 'https://picsum.photos/200', text: 'text2' }, { url: 'https://picsum.photos/200', text: 'text3' }, { url: 'https://picsum.photos/200', text: 'text4' }];
     return (
       <div>
         <EnterShare domain="http://oorga.co/fancywish?name="></EnterShare>

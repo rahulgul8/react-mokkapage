@@ -19,10 +19,10 @@ class EnterShare extends React.Component {
 
 
   render() {
-    return <div class="container">
-      <input class="input" type="text" placeholder="Enter your name" onChange={event => this.handleChange(event, 'url')}></input>
+    return <div className="container">
+      <input className="input" type="text" placeholder="Enter your name" onChange={event => this.handleChange(event, 'url')}></input>
       <br />
-      <div class="share" type="text" placeholder="Enter your name">{this.state.url}</div>
+      <div className="share" type="text" placeholder="Enter your name">{this.state.url}</div>
     </div>;
   }
 }
