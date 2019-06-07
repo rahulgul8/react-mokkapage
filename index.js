@@ -16,11 +16,11 @@ class App extends Component {
 
 
   render() {
-    const elements = [{ url: 'https://picsum.photos/200', text: 'text1' }, { url: 'https://picsum.photos/200', text: 'text2' }, { url: 'https://picsum.photos/200', text: 'text3' }, { url: 'https://picsum.photos/200', text: 'text4' }];
+    const elements = [{ url: 'https://picsum.photos/200', value: 'text1' }, { url: 'https://picsum.photos/200', value: 'text2' }, { url: 'https://picsum.photos/200', value: 'text3' }, { url: 'https://picsum.photos/200', value: 'text4' }];
     return (
       <div>
         <EnterShare domain="http://oorga.co/fancywish?name="></EnterShare>
-        <Question question="Which of this text looks good to you?" options={elements}></Question>
+        <Question question="Which of this text looks good to you?" options={elements} answer="text3"></Question>
       </div>
     );
   }
