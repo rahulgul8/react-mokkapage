@@ -14,7 +14,7 @@ class Question extends React.Component {
     }
 
     return (
-      <div>
+      <div className="question">
         <div>{this.props.question}</div>
         <div className="optionsDiv">
           {items}
