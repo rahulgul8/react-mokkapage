@@ -13,7 +13,7 @@ class Options extends React.Component {
   render() {
     let options = this.props.options;
     let div = options.map(option => (
-      <label className="optionLabel" key={option.value}>
+      <label className="optionLabel" key={option.value + Math.random() * 10}>
         <input type="radio" name="radio-button-group" {...option} onChange={this.props.onChange} checked={option.value === this.props.value} />
         <img src={option.url} />
         <br />

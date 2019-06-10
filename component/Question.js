@@ -29,6 +29,7 @@ class Question extends React.Component {
 
   handleFormChange(event) {
     console.log('Form change. Value: ', event.target.value);
+    if (this.props.handleChange) { this.props.handleChange(event); }
   }
 
 
@@ -36,7 +37,7 @@ class Question extends React.Component {
 
     const items = [];
     return (
-      <form onChange={this.handleFormChange}>
+      <form onChange={this.props.handleChange}>
         <div className="question">
           <div>{this.props.question}</div>
           <Options
@@ -45,7 +46,7 @@ class Question extends React.Component {
             options={this.props.options}
           />
         </div>
-      </form>
+      </form >
     )
   }
 

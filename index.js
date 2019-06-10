@@ -3,8 +3,11 @@ import { render } from 'react-dom';
 import Hello from './Hello';
 import Square from './component/test';
 import './style.css';
-import EnterShare from './component/EnterShare'
-import Question from './component/Question'
+import EnterShare from './component/EnterShare';
+import Question from './component/Question';
+import 'bootstrap/dist/css/bootstrap.css';
+
+import Page from './component/Page'
 
 class App extends Component {
   constructor() {
@@ -29,7 +32,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Question question="Which of this text looks good to you?" options={this.state.elements} answer="text3"></Question>
+        <Page></Page>
       </div>
     );
   }
