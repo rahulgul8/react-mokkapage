@@ -28,20 +28,18 @@ export default class Page extends React.Component {
     for (let i = 1; i <= this.count; i++) {
       label.push(<label className={i === this.state.currentQuestion ? 'highNumberLabel' : 'numberLabel'} key={i} >{i}</label>);
     }
-    let questions = this.getQuestion();
-    let q;
-    if (questions && questions.question) {
-      console.log('yes');
-      console.log(questions.options);
-      q = <Question question={questions.question} options={questions.options} handleChange={(event) => this.handleChange(event)}></Question>;
+    let currentQ = this.getQuestion();
+    let questionHTML;
+    if (currentQ) {
+      console.log('answer for' + this.state.currentQuestion + currentQ.answer);
+      questionHTML = <Question answer={currentQ.answer} question={currentQ.question} options={currentQ.options} handleChange={(event) => this.handleChange(event)}></Question>;
     }
-    console.log(questions);
     return (
       <div className="div">
         {label}
         <br />
         <button type="button" className="btn btn-primary" onClick={() => { this.incrementQuestion() }}>Skip this question </button>
-        {q}
+        {questionHTML}
       </div>);
   }
 
@@ -50,7 +48,9 @@ export default class Page extends React.Component {
   }
 
   handleChange(event) {
-    console.log('inside page' + event)
+    console.log('inside page' + event.answer)
+    let currentQ = this.getQuestion();
+    currentQ.answer = event.answer;
     this.incrementQuestion();
   }
 
