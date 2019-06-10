@@ -10,17 +10,26 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      name: 'React'
+      name: 'React',
+      elements: []
     };
   }
 
+  componentDidMount() {
+    fetch('https://5cfdeb3aca949b00148d3992.mockapi.io/mokka/quiz/quizdata')
+      .then(res => res.json())
+      .then((data) => {
+        this.setState({ elements: data })
+      })
+      .catch(console.log)
+  }
+
+  //  <EnterShare domain="http://oorga.co/fancywish?name="></EnterShare>
 
   render() {
-    const elements = [{ url: 'https://picsum.photos/200', value: 'text1' }, { url: 'https://picsum.photos/200', value: 'text2' }, { url: 'https://picsum.photos/200', value: 'text3' }, { url: 'https://picsum.photos/200', value: 'text4' }];
     return (
       <div>
-        <EnterShare domain="http://oorga.co/fancywish?name="></EnterShare>
-        <Question question="Which of this text looks good to you?" options={elements} answer="text3"></Question>
+        <Question question="Which of this text looks good to you?" options={this.state.elements} answer="text3"></Question>
       </div>
     );
   }
