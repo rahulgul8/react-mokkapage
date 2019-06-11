@@ -15,7 +15,8 @@ class App extends Component {
     super();
     this.state = {
       name: 'React',
-      elements: []
+      elements: [],
+      start: false
     };
   }
 
@@ -32,11 +33,15 @@ class App extends Component {
 
   start = false;
 
+  onClick() {
+    this.setState({ start: true });
+  }
+
   getPage() {
-    if (this.start) {
+    if (this.state.start) {
       return <CreatorPage></CreatorPage>
     }
-    return <StartPage></StartPage>
+    return <StartPage onClick={() => this.setState({ start: true })}></StartPage>
   }
 
   render() {
