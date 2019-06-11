@@ -3,24 +3,16 @@ import Question from './Question';
 import './pagestyle.css';
 export default class Page extends React.Component {
 
-  componentDidMount() {
-    fetch('https://5cfdeb3aca949b00148d3992.mockapi.io/mokka/quiz/questions')
-      .then(res => res.json())
-      .then((data) => {
-        this.setState({ questions: data })
-      })
-      .catch(console.log)
-  }
+
 
   constructor(props) {
     super(props);
     this.state = {
       currentQuestion: 1,
-      questions: []
     };
   }
 
-  count = 10;
+  count = 20;
 
   render() {
     let label = [];
@@ -44,14 +36,19 @@ export default class Page extends React.Component {
   }
 
   getQuestion() {
-    return this.state.questions[this.state.currentQuestion - 1];
+    return this.props.questions[this.state.currentQuestion - 1];
   }
 
   handleChange(event) {
     console.log('inside page' + event.answer)
+    this.updateSelectedQuestion(event);
+    this.incrementQuestion();
+  }
+
+  updateSelectedQuestion(event) {
     let currentQ = this.getQuestion();
     currentQ.answer = event.answer;
-    this.incrementQuestion();
+    this.props.selectedQuestions.push(currentQ);
   }
 
   incrementQuestion() {

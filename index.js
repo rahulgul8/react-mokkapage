@@ -7,7 +7,8 @@ import EnterShare from './component/EnterShare';
 import Question from './component/Question';
 import 'bootstrap/dist/css/bootstrap.css';
 
-import Page from './component/Page'
+import CreatorPage from './component/CreatorPage'
+import StartPage from './component/StartPage'
 
 class App extends Component {
   constructor() {
@@ -29,12 +30,17 @@ class App extends Component {
 
   //  <EnterShare domain="http://oorga.co/fancywish?name="></EnterShare>
 
+  start = false;
+
+  getPage() {
+    if (this.start) {
+      return <CreatorPage></CreatorPage>
+    }
+    return <StartPage></StartPage>
+  }
+
   render() {
-    return (
-      <div>
-        <Page></Page>
-      </div>
-    );
+    return this.getPage();
   }
 }
 
