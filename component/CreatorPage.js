@@ -32,6 +32,9 @@ export default class CreatorPage extends Component {
   }
 
   render() {
-    return <Page questions={this.state.questions} selectedQuestions={this.state.selectedQuestions}></Page>;
+    return (
+      <div>{this.props.name}
+      <Page questions={this.state.questions} selectedQuestions={this.state.selectedQuestions}></Page>
+      </div>);
   }
 }

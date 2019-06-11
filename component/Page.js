@@ -12,7 +12,7 @@ export default class Page extends React.Component {
     };
   }
 
-  count = 20;
+  count = 5;
 
   render() {
     let label = [];

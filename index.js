@@ -14,9 +14,9 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      name: 'React',
+      name: '',
       elements: [],
-      start: false
+      page: "start"
     };
   }
 
@@ -29,19 +29,26 @@ class App extends Component {
       .catch(console.log)
   }
 
-  //  <EnterShare domain="http://oorga.co/fancywish?name="></EnterShare>
-
-  start = false;
-
-  onClick() {
-    this.setState({ start: true });
-  }
+  updateState = (e) => {
+    console.log(e)
+    let page = e.page;
+    switch (page) {
+      case 'quiz': break;
+      case 'start': this.setState({ page: "quiz", name: e.name }); break;
+      case 'end': break;
+    }
+  };
 
   getPage() {
-    if (this.state.start) {
-      return <CreatorPage></CreatorPage>
+    if (this.state.page == 'quiz') {
+      return <CreatorPage name={this.state.name} updateState={this.updateState}></CreatorPage>
     }
-    return <StartPage onClick={() => this.setState({ start: true })}></StartPage>
+    if (this.state.page == "start") {
+      return <StartPage name={this.state.name} updateState={this.updateState}></StartPage>
+    }
+    if (this.state.page == "end") {
+      return <EnterShare domain="http://oorga.co/fancywish?name=" name={this.state.name} updateState={this.updateState}></EnterShare>;
+    }
   }
 
   render() {

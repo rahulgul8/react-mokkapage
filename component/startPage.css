@@ -1,6 +1,7 @@
 .start{
   margin: 50px auto;
   background: grey;
+  max-width: 500px;
 }
 
 .text{
