@@ -44,19 +44,20 @@ class App extends Component {
   updateState = (e) => {
     console.log(e)
     let page = e.page;
+
     switch (page) {
       case 'quiz': break;
       case 'start': this.setState({ page: "quiz", name: e.name }); break;
-      case 'end': break;
+      case 'end': this.setState({ page: "end" }); break;
     }
   };
 
   getPage() {
-    if (this.state.page == 'quiz') {
-      return <CreatorPage name={this.state.name} updateState={this.updateState} questions={this.state.questions}></CreatorPage>
-    }
     if (this.state.page == "start") {
       return <StartPage name={this.state.name} updateState={this.updateState}></StartPage>
+    }
+    if (this.state.page == 'quiz') {
+      return <CreatorPage name={this.state.name} updateState={this.updateState} questions={this.state.questions}></CreatorPage>
     }
     if (this.state.page == "end") {
       return <EnterShare domain="http://oorga.co/fancywish?name=" name={this.state.name} updateState={this.updateState}></EnterShare>;

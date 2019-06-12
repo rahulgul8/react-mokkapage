@@ -9,6 +9,7 @@ export default class Page extends React.Component {
     super(props);
     this.state = {
       currentQuestion: 1,
+      selectedIndex: 1
     };
   }
 
@@ -30,23 +31,26 @@ export default class Page extends React.Component {
       <div className="div">
         {label}
         <br />
-        <button type="button" className="btn btn-primary" onClick={() => { this.incrementQuestion() }}>Skip this question </button>
+        <button type="button" className="btn btn-primary" onClick={() => { this.incrementSkippedQuestion() }}>Skip this question </button>
         {questionHTML}
       </div>);
   }
 
   getQuestion() {
-    return this.props.questions[this.state.currentQuestion - 1];
+    return this.props.questions[this.state.selectedIndex - 1];
   }
 
   handleChange(event) {
     console.log('inside page' + event.answer)
     this.updateSelectedQuestion(event);
     this.incrementQuestion();
+    // this.incrementSkippedQuestion();
   }
 
   updateSelectedQuestion(event) {
     let currentQ = this.getQuestion();
+    var index = this.props.questions.indexOf(currentQ);
+    this.props.questions.splice(index, 1);
     currentQ.answer = event.answer;
     this.props.selectedQuestions.push(currentQ);
   }
@@ -55,7 +59,16 @@ export default class Page extends React.Component {
     if (this.count > this.state.currentQuestion)
       this.setState({ currentQuestion: ++this.state.currentQuestion });
     else {
-      this.setState({ currentQuestion: 1 });
+      this.props.updateState({ page: 'end' });
+    }
+  }
+
+
+  incrementSkippedQuestion() {
+    if (this.props.questions.length > this.state.selectedIndex)
+      this.setState({ selectedIndex: ++this.state.selectedIndex });
+    else {
+      this.setState({ selectedIndex: 1 });
     }
   }
 }
