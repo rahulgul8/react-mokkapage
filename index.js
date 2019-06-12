@@ -9,8 +9,10 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 import CreatorPage from './component/CreatorPage'
 import StartPage from './component/StartPage'
+import SharePage from './component/SharePage'
 
 class App extends Component {
+
   constructor() {
     super();
     this.state = {
@@ -63,12 +65,16 @@ class App extends Component {
       return <CreatorPage name={this.state.name} updateState={this.updateState} questions={this.state.questions}></CreatorPage>
     }
     if (this.state.page == "end") {
-      return <EnterShare domain="http://oorga.co/fancywish?name=" name={this.state.name} updateState={this.updateState}></EnterShare>;
+      return <SharePage domain="http://oorga.co/fancywish?name=" quizId={this.getKey()} name={this.state.name} updateState={this.updateState}></SharePage>;
     }
   }
 
+  getKey() {
+    return 123;
+  }
+
   render() {
-    return this.getPage();
+    return <div className="jumbotron container start">{this.getPage()}</div>;
   }
 }
 

@@ -28,7 +28,7 @@ export default class Page extends React.Component {
       questionHTML = <Question answer={currentQ.answer} question={currentQ.question} options={currentQ.options} handleChange={(event) => this.handleChange(event)}></Question>;
     }
     return (
-      <div className="div">
+      <div>
         {label}
         <br />
         <button type="button" className="btn btn-primary" onClick={() => { this.incrementSkippedQuestion() }}>Skip this question </button>

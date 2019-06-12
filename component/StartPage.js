@@ -21,7 +21,7 @@ export default class StartPage extends Component {
   }
 
   render() {
-    return (<div className="jumbotron container start">
+    return (<div>
       <h6><strong>2019 Friendship Dare!!!</strong></h6>
       <br />
       Enter your name and share your quiz with your friends

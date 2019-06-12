@@ -1,3 +1,11 @@
 h1, p {
   font-family: Lato;
 }
+
+.start{
+  margin: 50px auto;
+  background: grey;
+  max-width: 500px;
+  padding: 10px;
+  min-height: 200px;
+}

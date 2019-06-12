@@ -38,7 +38,7 @@ class Question extends React.Component {
     const items = [];
     return (
       <form onChange={(event) => { this.handleFormChange(event) }}>
-        <div className="question">
+        <div>
           <div>{this.props.question}</div>
           <Options
             value={this.props.answer}
