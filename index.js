@@ -48,7 +48,10 @@ class App extends Component {
     switch (page) {
       case 'quiz': break;
       case 'start': this.setState({ page: "quiz", name: e.name }); break;
-      case 'end': this.setState({ page: "end" }); break;
+      case 'end': {
+        this.setState({ page: "end" });
+        console.log(e.selectedQuestions)
+      }; break;
     }
   };
 

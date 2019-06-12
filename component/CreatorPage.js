@@ -13,10 +13,15 @@ export default class CreatorPage extends Component {
     };
   }
 
+  updateState = (e) => {
+    console.log(this.state.selectedQuestions);
+    e.selectedQuestions = this.state.selectedQuestions;
+    this.props.updateState(e);
+  }
   render() {
     return (
       <div>{this.props.name}
-        <Page questions={this.props.questions} selectedQuestions={this.state.selectedQuestions} updateState={this.props.updateState}></Page>
+        <Page questions={this.props.questions} selectedQuestions={this.state.selectedQuestions} updateState={this.updateState}></Page>
       </div>);
   }
 }
