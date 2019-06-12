@@ -15,19 +15,31 @@ class App extends Component {
     super();
     this.state = {
       name: '',
-      elements: [],
+      questions: [],
       page: "start"
     };
   }
 
   componentDidMount() {
-    fetch('https://5cfdeb3aca949b00148d3992.mockapi.io/mokka/quiz/quizdata')
+    fetch('https://5cfdeb3aca949b00148d3992.mockapi.io/mokka/quiz/questions')
       .then(res => res.json())
       .then((data) => {
-        this.setState({ elements: data })
+        this.setState({ questions: data });
+        this.loadImages(data);
       })
       .catch(console.log)
   }
+
+  loadImages(questions) {
+    questions.map((q) => {
+      return q.options.map(o => o.url);
+    }).reduce((a, b) => a.concat(b), []).forEach((q) => {
+      console.log(q)
+      new Image().src = q;
+    }
+    );
+  }
+
 
   updateState = (e) => {
     console.log(e)
@@ -41,7 +53,7 @@ class App extends Component {
 
   getPage() {
     if (this.state.page == 'quiz') {
-      return <CreatorPage name={this.state.name} updateState={this.updateState}></CreatorPage>
+      return <CreatorPage name={this.state.name} updateState={this.updateState} questions={this.state.questions}></CreatorPage>
     }
     if (this.state.page == "start") {
       return <StartPage name={this.state.name} updateState={this.updateState}></StartPage>
