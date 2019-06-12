@@ -74,7 +74,7 @@ class App extends Component {
   }
 
   render() {
-    return <div className="jumbotron container start">{this.getPage()}</div>;
+    return <div className="jumbotron start">{this.getPage()}</div>;
   }
 }
 

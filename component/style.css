@@ -13,10 +13,6 @@
   margin: 15px 5px;
 }
 
-.container{
-  text-align: center;
-}
-
 [type=radio] { 
   position: absolute;
   opacity: 0;
