@@ -10,6 +10,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import CreatorPage from './component/CreatorPage'
 import StartPage from './component/StartPage'
 import SharePage from './component/SharePage'
+import UserPage from './component/UserPage'
 
 class App extends Component {
 
@@ -57,15 +58,12 @@ class App extends Component {
     }
   };
 
-  getPage() {
-    if (this.state.page == "start") {
-      return <StartPage name={this.state.name} updateState={this.updateState}></StartPage>
-    }
-    if (this.state.page == 'quiz') {
-      return <CreatorPage name={this.state.name} updateState={this.updateState} questions={this.state.questions}></CreatorPage>
-    }
-    if (this.state.page == "end") {
-      return <SharePage domain="http://oorga.co/fancywish?name=" quizId={this.getKey()} name={this.state.name} updateState={this.updateState}></SharePage>;
+  getPage(page) {
+    switch (page) {
+      case 'start': return <StartPage name={this.state.name} updateState={this.updateState}></StartPage>; break;
+      case 'quiz': return <CreatorPage name={this.state.name} updateState={this.updateState} questions={this.state.questions}></CreatorPage>; break;
+      case 'end': return <SharePage domain="http://oorga.co/fancywish?name=" quizId={this.getKey()} name={this.state.name} updateState={this.updateState}></SharePage>; break;
+      case 'user': return <UserPage questions={this.state.questions}></UserPage>; break;
     }
   }
 
@@ -74,7 +72,7 @@ class App extends Component {
   }
 
   render() {
-    return <div className="jumbotron start">{this.getPage()}</div>;
+    return <div className="jumbotron start">{this.getPage(this.state.page)}</div>;
   }
 }
 

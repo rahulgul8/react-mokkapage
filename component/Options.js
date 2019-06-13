@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './style.css';
 
-class Options extends React.Component {
+export default class Options extends React.Component {
 
   constructor(props) {
     super(props);
@@ -13,17 +13,20 @@ class Options extends React.Component {
   render() {
     let options = this.props.options;
     let div = options.map(option => (
-      <label className="optionLabel" key={option.value + Math.random() * 10}>
-        <input type="radio" name="radio-button-group" {...option} onChange={this.props.onChange} checked={option.value === this.props.value} />
+      <label className="optionLabel" key={option.value}>
+        <input type="radio" name="radio-button-group" {...option} onClick={this.props.onChange} checked={option.value === this.props.value} className={} />
         <img src={option.url} />
         <br />
         {option.value}
       </label>
-    ))
+    ));
 
     return (
       <div>{div}</div>)
   }
+
+  getClassName() {
+
+  }
 }
 
-export default Options;

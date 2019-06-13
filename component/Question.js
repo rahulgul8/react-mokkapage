@@ -17,32 +17,41 @@ class Question extends React.Component {
     this.state = {
       selectedRadio: null,
     };
-    console.log('question console called')
-    this.onRadioChange = this.onRadioChange.bind(this);
-
+    console.log('question console called');
   }
 
-  onRadioChange(event) {
-    if (this.props.handleChange) {
-      event.answer = event.target.value;
-      this.props.handleChange(event);
+  handleChange = (event) => {
+    if (this.props.type == "user") {
+      this.handleUserChange(event);
+    }
+    if (this.props.type == "creator") {
+      this.handleCreatorChange(event);
     }
   }
 
-  handleFormChange(event) {
-    // console.log('Form change. Value: ', event.target.value);
+  highLightCorrectAnswer() {
+
+  }
+
+  handleUserChange(event) {
+
+  }
+
+  handleCreatorChange(event) {
+    event.answer = event.target.value;
+    this.props.handleChange(event);
   }
 
 
   render() {
     const items = [];
     return (
-      <form onChange={(event) => { this.handleFormChange(event) }}>
+      <form>
         <div>
           <div>{this.props.question}</div>
           <Options
             value={this.props.answer}
-            onChange={this.onRadioChange}
+            onChange={this.handleChange}
             options={this.props.options}
           />
         </div>

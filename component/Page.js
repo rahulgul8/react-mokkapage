@@ -3,8 +3,6 @@ import Question from './Question';
 import './pagestyle.css';
 export default class Page extends React.Component {
 
-
-
   constructor(props) {
     super(props);
     this.state = {
@@ -25,7 +23,7 @@ export default class Page extends React.Component {
     let questionHTML;
     if (currentQ) {
       console.log('answer for' + this.state.currentQuestion + currentQ.answer);
-      questionHTML = <Question answer={currentQ.answer} question={currentQ.question} options={currentQ.options} handleChange={(event) => this.handleChange(event)}></Question>;
+      questionHTML = <Question type={this.props.type} answer={currentQ.answer} question={currentQ.question} options={currentQ.options} handleChange={(event) => this.handleChange(event)}></Question>;
     }
     return (
       <div>
@@ -41,10 +39,21 @@ export default class Page extends React.Component {
   }
 
   handleChange(event) {
-    console.log('inside page' + event.answer)
+    if (this.props.type == "user") {
+      this.handleUserChange(event);
+    }
+    if (this.props.type == "creator") {
+      this.handleCreatorChange(event);
+    }
+  }
+
+  handleUserChange(event) {
+
+  }
+
+  handleCreatorChange(event) {
     this.updateSelectedQuestion(event);
     this.incrementQuestion();
-    // this.incrementSkippedQuestion();
   }
 
   updateSelectedQuestion(event) {
@@ -56,8 +65,9 @@ export default class Page extends React.Component {
   }
 
   incrementQuestion() {
-    if (this.count > this.state.currentQuestion)
+    if (this.count > this.state.currentQuestion) {
       this.setState({ currentQuestion: ++this.state.currentQuestion });
+    }
     else {
       this.props.updateState({ page: 'end' });
     }
