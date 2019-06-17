@@ -19,7 +19,7 @@ class App extends Component {
     this.state = {
       name: '',
       questions: [],
-      page: "start"
+      page: "user"
     };
   }
 
@@ -63,7 +63,13 @@ class App extends Component {
       case 'start': return <StartPage name={this.state.name} updateState={this.updateState}></StartPage>; break;
       case 'quiz': return <CreatorPage name={this.state.name} updateState={this.updateState} questions={this.state.questions}></CreatorPage>; break;
       case 'end': return <SharePage domain="http://oorga.co/fancywish?name=" quizId={this.getKey()} name={this.state.name} updateState={this.updateState}></SharePage>; break;
-      case 'user': return <UserPage questions={this.state.questions}></UserPage>; break;
+      case 'user':
+        this.state.questions = this.state.questions.map(q => {
+          q.answer = 'text1';
+          return q;
+        });
+        return <UserPage questions={this.state.questions} updateState={this.updateState}></UserPage>;
+        break;
     }
   }
 

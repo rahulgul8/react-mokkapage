@@ -14,19 +14,44 @@ export default class Options extends React.Component {
     let options = this.props.options;
     let div = options.map(option => (
       <label className="optionLabel" key={option.value}>
-        <input type="radio" name="radio-button-group" {...option} onClick={this.props.onChange} checked={option.value === this.props.value} className={} />
+        <input type="radio" name="radio-button-group" {...option} onClick={this.handleChange} />
         <img src={option.url} />
         <br />
         {option.value}
       </label>
     ));
 
-    return (
-      <div>{div}</div>)
+    return (<div>{div}</div>);
   }
 
-  getClassName() {
-
+  handleChange = (event) => {
+    if (this.props.type == "user") {
+      this.handleUserChange(event);
+    }
+    if (this.props.type == "creator") {
+      this.handleCreatorChange(event);
+    }
   }
+
+  handleUserChange(e) {
+    var className = "";
+    if (this.props.value === e.target.value) {
+      className = "right";
+    } else {
+      className = "wrong";
+    }
+    e.img = e.target.nextElementSibling;
+    e.img.classList.add(className);
+
+    setTimeout((e) => {
+      e.img.classList.remove(className);
+      this.props.onChange(e);
+    }, 500, e)
+  }
+
+  handleCreatorChange(event) {
+    this.props.onChange(event);
+  }
+
 }
 

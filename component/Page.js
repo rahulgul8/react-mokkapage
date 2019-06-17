@@ -48,7 +48,8 @@ export default class Page extends React.Component {
   }
 
   handleUserChange(event) {
-
+    this.incrementQuestion();
+    this.incrementSkippedQuestion();
   }
 
   handleCreatorChange(event) {

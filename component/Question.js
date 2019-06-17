@@ -2,14 +2,6 @@ import React, { Component } from 'react';
 
 import Options from './Options';
 
-const RadioGroup = ({ onChange, value, options }) => (
-  <div>
-    {options.map(option => (
-      <Options {...option} checked={option.value === value} onChange={onChange} />
-    ))}
-  </div>
-);
-
 class Question extends React.Component {
 
   constructor(props) {
@@ -29,15 +21,12 @@ class Question extends React.Component {
     }
   }
 
-  highLightCorrectAnswer() {
-
-  }
-
   handleUserChange(event) {
-
+    this.props.handleChange(event);
   }
 
   handleCreatorChange(event) {
+    debugger
     event.answer = event.target.value;
     this.props.handleChange(event);
   }
@@ -49,7 +38,7 @@ class Question extends React.Component {
       <form>
         <div>
           <div>{this.props.question}</div>
-          <Options
+          <Options type={this.props.type}
             value={this.props.answer}
             onChange={this.handleChange}
             options={this.props.options}
