@@ -37,8 +37,10 @@ export default class Options extends React.Component {
     var className = "";
     if (this.props.value === e.target.value) {
       className = "right";
+      e.result = true;
     } else {
       className = "wrong";
+      e.result = false;
     }
     e.img = e.target.nextElementSibling;
     e.img.classList.add(className);

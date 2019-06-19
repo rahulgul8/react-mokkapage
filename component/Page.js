@@ -7,7 +7,8 @@ export default class Page extends React.Component {
     super(props);
     this.state = {
       currentQuestion: 1,
-      selectedIndex: 1
+      selectedIndex: 1,
+      correctAnswer: 0
     };
   }
 
@@ -48,6 +49,7 @@ export default class Page extends React.Component {
   }
 
   handleUserChange(event) {
+    this.calculateUserResult(event);
     this.incrementQuestion();
     this.incrementSkippedQuestion();
   }
@@ -80,6 +82,12 @@ export default class Page extends React.Component {
       this.setState({ selectedIndex: ++this.state.selectedIndex });
     else {
       this.setState({ selectedIndex: 1 });
+    }
+  }
+
+  calculateUserResult(event) {
+    if (event.result) {
+      this.setState({ correctAnswer: ++this.state.correctAnswer });
     }
   }
 }
