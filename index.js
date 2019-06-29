@@ -11,6 +11,7 @@ import CreatorPage from './component/CreatorPage'
 import StartPage from './component/StartPage'
 import SharePage from './component/SharePage'
 import UserPage from './component/UserPage'
+import Result from './component/Result'
 
 class App extends Component {
 
@@ -19,7 +20,7 @@ class App extends Component {
     this.state = {
       name: '',
       questions: [],
-      page: "user"
+      page: "result"
     };
   }
 
@@ -70,6 +71,7 @@ class App extends Component {
         });
         return <UserPage questions={this.state.questions} updateState={this.updateState}></UserPage>;
         break;
+      case 'result': return <Result></Result>;
     }
   }
 
